@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pagination, Button, DatePicker, Dropdown, FormField, Panel, Password, TextBox, TextArea, SideModal } from '@veneer/core';
+import { Pagination, Button, DatePicker, Dropdown, FormField, Panel, Password, TextBox, TextArea, Modal } from '@veneer/core';
 import { Table, TableConfiguration } from '@veneer/table';
 import dialog from './dialog';
 import { Formik } from 'formik';
@@ -184,8 +184,12 @@ export default class extends React.Component {
               preferences={preferences}
             />
           </div>
-          <SideModal show={true} onClose={this.yourCallbackFunction} title="Modal title" show={this.state.open}>
-            <div>
+
+          <Modal
+  onClose={this.yourCallbackFunction}
+  title="Customer Information"
+  size="sm" show={this.state.open}>
+  <div>
             <Panel  >
     <Formik
       initialValues={{
@@ -353,7 +357,7 @@ export default class extends React.Component {
     />
   </Panel>
             </div>
-          </SideModal>
+</Modal>
         </div>
         <Table
           config={config}
