@@ -1,0 +1,14 @@
+.vnex-charts-page {
+  align-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+  width: 950px;
+}
+
+.vnex-charts-page__card-container {
+  padding: 10px;
+  flex-grow: 2;
+}

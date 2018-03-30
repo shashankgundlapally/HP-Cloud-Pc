@@ -1,0 +1,15 @@
+.vnex-app__container {
+  height: 100%;
+  min-height: 100%;
+}
+
+.vnex-app__content {
+  background-color: rgba(241, 241, 241, 0.68);
+  margin-left: 260px;
+  min-height: calc(100% - 240px);
+  padding: 120px 20px;
+  width: calc(100% - 300px);
+}
+.vn-side-menu__logo-image{
+  width: 80px;
+}
