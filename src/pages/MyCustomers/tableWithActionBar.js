@@ -224,7 +224,7 @@ contructor(props){
           onConfirm={this.yourCallbackFunction}
           title="Customer Information"
           size="sm"  show='false'  >
-            <Panel  >
+ <Panel  >
     <Formik
       initialValues={{
         email: '',
