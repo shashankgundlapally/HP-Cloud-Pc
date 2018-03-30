@@ -1,9 +1,9 @@
 import React from 'react';
-import { Pagination, Button,DatePicker, Dropdown, FormField, Panel, Password, TextBox, TextArea, Modal,ConfirmationModal } from '@veneer/core';
+import { Pagination, Button, DatePicker, Dropdown, FormField, Panel, Password, TextBox, TextArea, SideModal } from '@veneer/core';
 import { Table, TableConfiguration } from '@veneer/table';
+import dialog from './dialog';
 import { Formik } from 'formik';
 import Yup from 'yup';
-import dialog from './dialog';
 
 
 class PaginationHandler {
@@ -13,8 +13,8 @@ class PaginationHandler {
     this.pageSize = 5;
     this.pageSizeOptions = [2, 5, 10];
     this.totalItems = 0;
-
   }
+
   changePageSize = (pageSize) => {
     this.pageSize = pageSize;
     this.currentPage = 1;
@@ -40,7 +40,6 @@ class PaginationHandler {
 }
 
 export default class extends React.Component {
-
 
   static filter = (data, filters) => {
     let filteredData = data;
@@ -77,18 +76,10 @@ export default class extends React.Component {
       paginationHandler,
       preferences,
       loading: false,
+      open: false,
     };
-
+    
   }
-contructor(props){
-
-  this.onOpenModal = this.onOpenModal.bind(this);
-  this.onCloseModal = this.onCloseModal.bind(this);
-  this.state = {
-    show:true
-
-  };
-}
 
   handleChangePageSize = (pageSize) => {
     const { data, paginationHandler } = this.state;
@@ -163,31 +154,27 @@ contructor(props){
     const pageData = paginationHandler.slice(data);
     this.setState({ data, pageData });
   }
-  onOpenModal() {
-    this.setState({show: true});
- }
-
- onCloseModal() {
-    this.setState({show:false});
- }
+  Isopen = (event) =>{
+    this.setState({open: true});
+  }
+  yourCallbackFunction = (event) =>{
+    this.setState({open: false});
+  }
 
   render() {
-    const {show} = this.state;
     const { config } = this.props;
     const { pageData, loading, paginationHandler, preferences, selectAllItems } = this.state;
     return (
       <div>
         <div style={{ paddingBottom: '20px' }}>
           <div style={{ display: 'inline-block', width: '50%' }}>
-          {/* onClick={() => { this.props.removeTaskFunction(todo) }} */}
-            <Button  onClick={() => this.setState({show: true})} >
+          <Button onClick={this.Isopen}>
               New Customer
             </Button>
             &nbsp;&nbsp;&nbsp;
             <Button onClick={this.handleDeleteSelectedRows} >
               Delete Selected Rows
             </Button>
-
           </div>
 
           <div style={{ display: 'inline-block', width: '50%', textAlign: 'right' }}>
@@ -197,34 +184,9 @@ contructor(props){
               preferences={preferences}
             />
           </div>
-
-        </div>
-        <Table
-          config={config}
-          loading={loading}
-          data={pageData}
-          onDeselect={this.handleDeselect}
-          onSelectAllItems={this.handleSelectAllItems}
-          onSelectAllPage={this.handleSelectAllPage}
-          onSelect={this.handleSelect}
-          onSort={this.handleSort}
-          onFilter={this.handleFilter}
-          selectAllItems={selectAllItems}
-          preferences={preferences}
-        >
-          <Pagination
-            {...paginationHandler.props()}
-            onChangePageSize={this.handleChangePageSize}
-            onPaginate={this.handlePaginate}
-          />
-
-        </Table>    
-        <ConfirmationModal open={this.state.show}
-          onClose={this.yourCallbackFunction}
-          onConfirm={this.yourCallbackFunction}
-          title="Customer Information"
-          size="sm"  show='false'  >
- <Panel  >
+          <SideModal show={true} onClose={this.yourCallbackFunction} title="Modal title" show={this.state.open}>
+            <div>
+            <Panel  >
     <Formik
       initialValues={{
         email: '',
@@ -390,7 +352,29 @@ contructor(props){
         )}
     />
   </Panel>
-        </ConfirmationModal>    
+            </div>
+          </SideModal>
+        </div>
+        <Table
+          config={config}
+          loading={loading}
+          data={pageData}
+          onDeselect={this.handleDeselect}
+          onSelectAllItems={this.handleSelectAllItems}
+          onSelectAllPage={this.handleSelectAllPage}
+          onSelect={this.handleSelect}
+          onSort={this.handleSort}
+          onFilter={this.handleFilter}
+          selectAllItems={selectAllItems}
+          preferences={preferences}
+        >
+          <Pagination
+            {...paginationHandler.props()}
+            onChangePageSize={this.handleChangePageSize}
+            onPaginate={this.handlePaginate}
+          />
+        </Table>
+        <dialog/>
       </div>
     );
   }
