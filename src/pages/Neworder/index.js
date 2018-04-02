@@ -1,12 +1,215 @@
 import React from 'react';
 import './style.css';
-import { Button, DatePicker, Dropdown, FormField, Panel, Password, TextBox, TextArea } from '@veneer/core';
+import { Button, DatePicker,RadioButtons,RadioButton, Dropdown, Icon,FormField, Panel, Password, TextBox, TextArea } from '@veneer/core';
 
 
 
-export default () => (
-    <div>
+class Neworder extends React.Component {
+    render() {
+      return (
+        <div>
+        <Panel  className="undefined" contentClassName="undefined">
         <h3 style={{ color: ' #333333'}}><b>Questionnaires</b></h3>
+        <hr/>
+        <br/>
+            <FormField label="1. How many users  are you intending to  provide with Cloud PC ?" id="formfield-id">
+                <div style={{width: "400px"}}>
+                    <TextBox placeholder="No of users to provide with CloudPC" name="input_name" maxLength="undefined" />
+                </div>
+            </FormField>
+
+            <FormField label="2. Breakdown of MOBILE and FIXED LOCATION users:" id="formfield-id">
+                <div style={{width: "400px"}}>
+                    <RadioButtons name="radiobutton_horizontal" alignment="horizontal">
+                         <RadioButton
+                          label="Mobile Users"
+                          index={0}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="Fixed Location Users"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                        </RadioButtons>
+                </div>
+                <div style={{width: "400px"}}>
+                <div style={{width: "400px"}}>
+                    <TextBox placeholder="No of users" name="input_name" maxLength="undefined" />
+                </div>
+                </div>
+            </FormField>
+
+            <FormField label="3. Display Usge among Users (how many displays does each user have)" id="formfield-id">
+                <div style={{width: "800px"}}>
+                <RadioButtons name="radiobutton_horizontal" alignment="horizontal">
+                         <RadioButton
+                          label="1 or 2 Displays"
+                          index={0}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="3 or more displays"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                          
+                        </RadioButtons>
+                </div>
+                <div style={{width: "400px"}}>
+                <div style={{width: "400px"}}>
+                    <TextBox placeholder="No of displays for each user" name="input_name" maxLength="undefined" />
+                </div>
+                </div>
+            </FormField>
+            <FormField label="4. How are your PRINTERS supported" id="formfield-id">
+                <div style={{width: "800px"}}>
+                <RadioButtons name="radiobutton_horizontal" alignment="horizontal">
+                         <RadioButton
+                          label="User has a printer connected to their PC"
+                          index={0}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="Users connect to printers on the local network"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="Users use E-Print services"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                          
+                        </RadioButtons>
+                </div>
+                <div style={{width: "400px"}}>
+                <div style={{width: "400px"}}>
+                    <TextBox placeholder="" name="input_name" maxLength="undefined" />
+                </div>
+                </div>
+            </FormField>
+            <FormField label="5. Are any other devices (peripherals) connected to your users PC" id="formfield-id">
+                <div style={{width: "800px"}}>
+                <RadioButtons name="radiobutton_horizontal" alignment="horizontal">
+                         <RadioButton
+                          label="Camera"
+                          index={0}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="Scanner"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="Other"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                          
+                        </RadioButtons>
+                </div>
+                <div style={{width: "400px"}}>
+                <div style={{width: "400px"}}>
+                    <TextBox placeholder="" name="input_name" maxLength="undefined" />
+                </div>
+                </div>
+            </FormField>
+            <FormField label="6. Do you utilize a domain or active directory in your offices" id="formfield-id">
+                <div style={{width: "800px"}}>
+                <RadioButtons name="radiobutton_horizontal" alignment="horizontal">
+                         <RadioButton
+                          label="Yes"
+                          index={0}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="No"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                         
+                        </RadioButtons>
+                </div>
+            </FormField>
+            <FormField label="7. Do any of your peripherals require a Serial Port" id="formfield-id">
+                <div style={{width: "800px"}}>
+                <RadioButtons name="radiobutton_horizontal" alignment="horizontal">
+                         <RadioButton
+                          label="Yes"
+                          index={0}
+                          onChange="undefined"
+                          value="undefined" />
+                          <RadioButton
+                          label="No"
+                          index={1}
+                          onChange="undefined"
+                          value="undefined" />
+                         
+                        </RadioButtons>
+                </div>
+                <FormField label="How many users" id="formfield-id">
+                <div style={{width: "400px"}}>
+                    <TextBox placeholder="No of users" name="input_name" maxLength="undefined" />
+                </div>
+            </FormField>
+            </FormField>
+            <FormField label="8. Understanding the Software used by your Users" id="formfield-id">
+                <div style={{width: "800px"}}>
+            <RadioButtons name="radiobutton_label" id="radio-group-id">
+  <RadioButton
+    label="Microsoft Office 365 Subscriptions"
+    id="radio-item1-id"
+    index={0}
+    onChange="undefined"
+    value="undefined" />
+  <RadioButton
+    label="Microsoft Office (Other version)"
+    id="radio-item2-id"
+    index={1}
+    onChange="undefined"
+    value="undefined" />
+    <RadioButton
+    label="Adobe Reader"
+    id="radio-item2-id"
+    index={1}
+    onChange="undefined"
+    value="undefined" />
+    <RadioButton
+    label="Google G-Suite applications"
+    id="radio-item2-id"
+    index={1}
+    onChange="undefined"
+    value="undefined" />
+    <RadioButton
+    label="Voice over IP (VOIP) Solution"
+    id="radio-item2-id"
+    index={1}
+    onChange="undefined"
+    value="undefined" />
+    <RadioButton
+    label="Other Standard Business Software"
+    id="radio-item2-id"
+    index={1}
+    onChange="undefined"
+    value="undefined" />
+    <RadioButton
+    label="Custom Developed Software"
+    id="radio-item2-id"
+    index={1}
+    onChange="undefined"
+    value="undefined" />
+</RadioButtons>
+                </div>
+            </FormField>
+            <div style={{ display: 'inline-block', width: '50%', marginLeft:'87% '}}>
+                <Button >
+                    Save Order
+            </Button>
+        </div>
+        </Panel>
+        {/* <h3 style={{ color: ' #333333'}}><b>Questionnaires</b></h3>
         <hr />
         <div class="form-group">
             <p>1. Do you want this order for your business purpose?</p>
@@ -39,8 +242,6 @@ export default () => (
             <label><input type="radio" name="optradio6" /> No </label>
         </div>
         <br />
-        
-        
 
         <h3 style={{ color: '#333333' }}><b>Recomendations & Cost Estimation</b></h3>
         <hr />
@@ -76,7 +277,11 @@ export default () => (
                 
             </div>
 
-        </div>
+        </div> */}
         
     </div>
-);
+      );
+    }
+  }
+
+export default Neworder;

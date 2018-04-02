@@ -23,17 +23,17 @@ export default {
     },
     {
       column: 'state',
-      title: 'state',
+      title: 'State',
 
     },
     {
       column: 'city',
-      title: ' city',
+      title: ' City',
 
     },
     {
       column: 'zipcode',
-      title: ' zipcode',
+      title: ' Zip Code',
 
     },
     {
